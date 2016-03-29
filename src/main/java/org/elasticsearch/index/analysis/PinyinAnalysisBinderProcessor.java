@@ -25,6 +25,6 @@ public class PinyinAnalysisBinderProcessor extends AnalysisModule.AnalysisBinder
 
     @Override
     public void processTokenFilters(TokenFiltersBindings tokenFiltersBindings) {
-        tokenFiltersBindings.processTokenFilter("pinyin_segment", PinyinSegmentationTokenFilterFactory.class);
+        tokenFiltersBindings.processTokenFilter("pinyin_segment", PinyinTokenFilterFactory.class);
     }
 }
