@@ -18,6 +18,8 @@ public class PinyinTokenFilterFactory extends AbstractTokenFilterFactory {
     }
 
     @Override public TokenStream create(TokenStream tokenStream) {
-        return new PinyinSegmentationTokenFilter(tokenStream);
+        return
+                new PinyinTokenFilter(
+                        new PinyinSegmentationTokenFilter(tokenStream));
     }
 }
