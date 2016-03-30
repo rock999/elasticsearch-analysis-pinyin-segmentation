@@ -6,7 +6,7 @@ public class PinyinSegmentation {
 
     public static List<String> split(String s) {
         List<String> rawPinyins = FMMSegmentation.splitSpell(s);
-
+        OverlapAmbiguitySolver.solve(rawPinyins);
         return rawPinyins;
     }
 }
