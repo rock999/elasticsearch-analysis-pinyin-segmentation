@@ -4,6 +4,8 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
+import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
 import org.apache.lucene.util.Version;
 import org.junit.Test;
 
@@ -20,7 +22,7 @@ public class PinyinTokenFilterTest {
     @Test
     public void testTokenFilter() throws IOException {
 
-        Set<String> pinyin = getTokens("yingou里翻船");
+        Set<String> pinyin = getTokens("广'中'苑");
 
         System.out.println("pinyin result:");
         System.out.println(pinyin);
@@ -39,8 +41,15 @@ public class PinyinTokenFilterTest {
         Set<String> pinyin= new HashSet<String>();
         TokenFilter filter = segmentationTokenFilter;
         filter.reset();
+        int position = 0;
         while (filter.incrementToken()) {
             CharTermAttribute ta = filter.getAttribute(CharTermAttribute.class);
+            OffsetAttribute oa = filter.getAttribute(OffsetAttribute.class);
+            PositionIncrementAttribute pa = filter.getAttribute(PositionIncrementAttribute.class);
+            System.out.println(ta);
+            System.out.println(oa.startOffset() + "_" + oa.endOffset());
+            System.out.println(position += pa.getPositionIncrement());
+            System.out.println("**************");
             pinyin.add(ta.toString());
         }
         return pinyin;
