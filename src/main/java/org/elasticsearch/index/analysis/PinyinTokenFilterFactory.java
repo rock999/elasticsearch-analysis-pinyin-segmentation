@@ -9,9 +9,6 @@ import org.elasticsearch.index.Index;
 import org.elasticsearch.index.settings.IndexSettings;
 
 
-/**
- * @author liang
- */
 public class PinyinTokenFilterFactory extends AbstractTokenFilterFactory {
     @Inject public PinyinTokenFilterFactory(Index index, @IndexSettings Settings indexSettings, @Assisted String name, @Assisted Settings settings) {
         super(index, indexSettings, name, settings);

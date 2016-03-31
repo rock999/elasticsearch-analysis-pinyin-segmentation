@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <name>elasticsearch-analysis-pinyinx</name>
+    <name>elasticsearch-analysis-pinyin-segmentation</name>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.elasticsearch</groupId>
-    <artifactId>elasticsearch-analysis-pinyinx</artifactId>
+    <artifactId>elasticsearch-analysis-pinyin-segmentation</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
     <description>Pinyin Analysis for ElasticSearch</description>

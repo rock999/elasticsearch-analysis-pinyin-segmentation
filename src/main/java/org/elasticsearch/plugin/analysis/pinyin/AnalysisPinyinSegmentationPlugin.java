@@ -7,11 +7,11 @@ import org.elasticsearch.plugins.AbstractPlugin;
 /**
  * The Pinyin Analysis plugin integrates Pinyin4j(http://pinyin4j.sourceforge.net/) module into elasticsearch.
  */
-public class AnalysisPinyinxPlugin extends AbstractPlugin {
+public class AnalysisPinyinSegmentationPlugin extends AbstractPlugin {
 
     @Override
     public String name() {
-        return "analysis-pinyinx";
+        return "analysis-pinyin-segmentation";
     }
 
     @Override

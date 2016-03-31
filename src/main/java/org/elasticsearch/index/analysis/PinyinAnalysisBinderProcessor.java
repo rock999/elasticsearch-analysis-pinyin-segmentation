@@ -19,8 +19,7 @@
 
 package org.elasticsearch.index.analysis;
 
-/**
- */
+
 public class PinyinAnalysisBinderProcessor extends AnalysisModule.AnalysisBinderProcessor {
 
     @Override
