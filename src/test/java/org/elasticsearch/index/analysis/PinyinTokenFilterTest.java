@@ -7,12 +7,12 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
 import org.apache.lucene.util.Version;
+import org.elasticsearch.common.collect.Lists;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class PinyinTokenFilterTest {
 
@@ -22,28 +22,32 @@ public class PinyinTokenFilterTest {
     @Test
     public void testTokenFilter() throws IOException {
 
-        Set<String> pinyin;
+        List<String> pinyin;
 
 //        pinyin = getTokens("广'中'苑");
 //        System.out.println("pinyin result:");
 //        System.out.println(pinyin);
 
-        pinyin = getTokens("静安haojingyuan");
+        pinyin = getTokens("八方花苑");
         System.out.println("pinyin result:");
         System.out.println(pinyin);
+
+        List<String> newPinyin = getTokens("八fang");
+        System.out.println(newPinyin);
+        System.out.println(pinyin.containsAll(newPinyin));
 
 //        Assert.assertEquals(
 //                Sets.newHashSet("liu", "de", "hua", "刘", "德", "华"),
 //                pinyin);
     }
 
-    private Set<String> getTokens(String string) throws IOException {
+    private List<String> getTokens(String string) throws IOException {
         StringReader sr = new StringReader(string);
         Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_41);
         PinyinTokenFilter pinyinTokenFilter = new PinyinTokenFilter(analyzer.tokenStream("f",sr));
         PinyinSegmentationTokenFilter segmentationTokenFilter =
                 new PinyinSegmentationTokenFilter(pinyinTokenFilter);
-        Set<String> pinyin= new HashSet<String>();
+        List<String> pinyin= Lists.newArrayList();
         TokenFilter filter = segmentationTokenFilter;
         filter.reset();
         int position = 0;
@@ -51,10 +55,10 @@ public class PinyinTokenFilterTest {
             CharTermAttribute ta = filter.getAttribute(CharTermAttribute.class);
             OffsetAttribute oa = filter.getAttribute(OffsetAttribute.class);
             PositionIncrementAttribute pa = filter.getAttribute(PositionIncrementAttribute.class);
-            System.out.println(ta);
-            System.out.println(oa.startOffset() + "_" + oa.endOffset());
-            System.out.println(position += pa.getPositionIncrement());
-            System.out.println("**************");
+//            System.out.println(ta);
+//            System.out.println(oa.startOffset() + "_" + oa.endOffset());
+//            System.out.println(position += pa.getPositionIncrement());
+//            System.out.println("**************");
             pinyin.add(ta.toString());
         }
         return pinyin;
