@@ -22,8 +22,13 @@ public class PinyinTokenFilterTest {
     @Test
     public void testTokenFilter() throws IOException {
 
-        Set<String> pinyin = getTokens("广'中'苑");
+        Set<String> pinyin;
 
+//        pinyin = getTokens("广'中'苑");
+//        System.out.println("pinyin result:");
+//        System.out.println(pinyin);
+
+        pinyin = getTokens("静安haojingyuan");
         System.out.println("pinyin result:");
         System.out.println(pinyin);
 
