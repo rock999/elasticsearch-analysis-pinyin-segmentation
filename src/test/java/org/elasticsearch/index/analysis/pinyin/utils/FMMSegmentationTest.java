@@ -9,5 +9,7 @@ public class FMMSegmentationTest extends TestCase {
         String pinyin = "我爱北京tiananmen";
         System.out.println(FMMSegmentation.splitSpell(pinyin));
 
+        pinyin = "fh";
+        System.out.println(FMMSegmentation.splitSpell(pinyin));
     }
 }

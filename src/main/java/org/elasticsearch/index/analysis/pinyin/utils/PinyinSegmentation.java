@@ -1,5 +1,6 @@
 package org.elasticsearch.index.analysis.pinyin.utils;
 
+import org.elasticsearch.common.collect.Lists;
 import org.elasticsearch.index.analysis.pinyin.entity.TokenEntity;
 
 import java.util.Collections;
@@ -19,10 +20,20 @@ import java.util.List;
  */
 public class PinyinSegmentation {
 
+    final boolean initialLetterMode = false;
+
     public List<TokenEntity> split(String s) {
         List<TokenEntity> rawPinyins = TokenEntity.wrap(FMMSegmentation.splitSpell(s));
+        List<TokenEntity> initialLetters;
+        if (initialLetterMode) {
+           initialLetters = grepInitialLetters(rawPinyins);
+        }
         OverlapAmbiguitySolver.solve(rawPinyins);
         CombinationAmbiguitySolver.solve(rawPinyins);
+
+        if (initialLetterMode) {
+            rawPinyins.addAll(initialLetters);
+        }
         Collections.sort(rawPinyins, new Comparator<TokenEntity>() {
             @Override
             public int compare(TokenEntity o1, TokenEntity o2) {
@@ -30,5 +41,17 @@ public class PinyinSegmentation {
             }
         });
         return rawPinyins;
+    }
+
+    private List<TokenEntity> grepInitialLetters(List<TokenEntity> tokens) {
+        List<TokenEntity> result = Lists.newArrayList();
+        for (TokenEntity t : tokens) {
+            String value = t.getValue();
+            if (value != null && value.length() > 1 && value.charAt(0) < 128) {
+                result.add(t.duplicate()
+                        .setValue(t.getValue().substring(0, 1)));
+            }
+        }
+        return result;
     }
 }

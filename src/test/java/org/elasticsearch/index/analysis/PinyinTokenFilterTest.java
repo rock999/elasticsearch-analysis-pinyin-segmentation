@@ -28,11 +28,11 @@ public class PinyinTokenFilterTest {
 //        System.out.println("pinyin result:");
 //        System.out.println(pinyin);
 
-        pinyin = getTokens("bafanghuayuan");
+        pinyin = getTokens("八方花苑");
         System.out.println("pinyin result:");
         System.out.println(pinyin);
 
-        List<String> newPinyin = getTokens("八fang");
+        List<String> newPinyin = getTokens("八fhy");
         System.out.println(newPinyin);
         System.out.println(pinyin.containsAll(newPinyin));
 
