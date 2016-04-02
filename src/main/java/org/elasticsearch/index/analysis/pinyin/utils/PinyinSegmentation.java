@@ -1,6 +1,5 @@
 package org.elasticsearch.index.analysis.pinyin.utils;
 
-import org.elasticsearch.common.collect.Lists;
 import org.elasticsearch.index.analysis.pinyin.entity.TokenEntity;
 
 import java.util.Collections;
@@ -20,16 +19,10 @@ import java.util.List;
  */
 public class PinyinSegmentation {
 
-    // most granular mode, in which "xiang" is split into "x", "i", "a", "n", "g"
-    private  boolean mostGranularMode = false;
-
     public List<TokenEntity> split(String s) {
         List<TokenEntity> rawPinyins = TokenEntity.wrap(FMMSegmentation.splitSpell(s));
         OverlapAmbiguitySolver.solve(rawPinyins);
         CombinationAmbiguitySolver.solve(rawPinyins);
-        if (mostGranularMode) {
-            splitToLetter(rawPinyins);
-        }
         Collections.sort(rawPinyins, new Comparator<TokenEntity>() {
             @Override
             public int compare(TokenEntity o1, TokenEntity o2) {
@@ -37,22 +30,5 @@ public class PinyinSegmentation {
             }
         });
         return rawPinyins;
-    }
-
-    private static List<TokenEntity> splitToLetter(List<TokenEntity> tokens){
-        if (tokens == null || tokens.size() == 0) {
-            return tokens;
-        }
-        List<TokenEntity> additionalTokens = Lists.newArrayList();
-        for (TokenEntity t : tokens) {
-            if (t.getValue().length() <= 1) {
-                continue;
-            }
-            for (char c : t.getValue().toCharArray()) {
-                additionalTokens.add(t.duplicate().setValue(String.valueOf(c)));
-            }
-        }
-        tokens.addAll(additionalTokens);
-        return tokens;
     }
 }

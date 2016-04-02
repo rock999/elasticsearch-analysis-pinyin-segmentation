@@ -28,7 +28,7 @@ public class PinyinTokenFilterTest {
 //        System.out.println("pinyin result:");
 //        System.out.println(pinyin);
 
-        pinyin = getTokens("八方花苑");
+        pinyin = getTokens("bafanghuayuan");
         System.out.println("pinyin result:");
         System.out.println(pinyin);
 
