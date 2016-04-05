@@ -1,12 +1,34 @@
 package org.elasticsearch.index.analysis.pinyin.utils;
 
 import org.elasticsearch.common.collect.Lists;
+import org.elasticsearch.index.analysis.pinyin.entity.TrieTree;
 
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FMMSegmentation {
+
+    static final TrieTree trieTree = new TrieTree();
+
+    static {
+        try (
+             InputStream fis = Thread.currentThread()
+                     .getContextClassLoader()
+                     .getResourceAsStream("./spell.txt");
+             InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+             BufferedReader br = new BufferedReader(isr)
+        ) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                trieTree.add(line.toCharArray());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * This is a Regular-Expression based implementation
@@ -31,10 +53,28 @@ public class FMMSegmentation {
     }
 
     // Use a trie tree to implement the FMM segmentation
-    // FIXME: implement this funcitoin
     public static List<String> split(String s) {
         List<String> tokenResult = Lists.newArrayList();
 
+        int beginIndex = 0;
+        int endIndex = 0;
+
+        char[] string = s.toCharArray();
+        while (endIndex < s.length()) {
+            endIndex = trieTree.findEndIndexInChildren(string, beginIndex);
+            if (beginIndex < endIndex) {
+                StringBuilder sb = new StringBuilder();
+                for (int i = beginIndex; i < endIndex; i++) {
+                    sb.append(string[i]);
+                }
+                tokenResult.add(sb.toString());
+                beginIndex = endIndex;
+            } else {
+                tokenResult.add(String.valueOf(string[beginIndex]));
+                beginIndex++;
+                endIndex++;
+            }
+        }
         return tokenResult;
     }
 
