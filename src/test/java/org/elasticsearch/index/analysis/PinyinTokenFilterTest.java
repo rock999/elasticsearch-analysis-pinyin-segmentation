@@ -8,6 +8,7 @@ import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
 import org.apache.lucene.util.Version;
 import org.elasticsearch.common.collect.Lists;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -28,13 +29,8 @@ public class PinyinTokenFilterTest {
 //        System.out.println("pinyin result:");
 //        System.out.println(pinyin);
 
-        pinyin = getTokens("八方花苑");
-        System.out.println("pinyin result:");
-        System.out.println(pinyin);
-
-        List<String> newPinyin = getTokens("八fhy");
+        List<String> newPinyin = getTokens("上炼二村");
         System.out.println(newPinyin);
-        System.out.println(pinyin.containsAll(newPinyin));
 
 //        Assert.assertEquals(
 //                Sets.newHashSet("liu", "de", "hua", "刘", "德", "华"),
@@ -55,10 +51,11 @@ public class PinyinTokenFilterTest {
             CharTermAttribute ta = filter.getAttribute(CharTermAttribute.class);
             OffsetAttribute oa = filter.getAttribute(OffsetAttribute.class);
             PositionIncrementAttribute pa = filter.getAttribute(PositionIncrementAttribute.class);
-//            System.out.println(ta);
-//            System.out.println(oa.startOffset() + "_" + oa.endOffset());
-//            System.out.println(position += pa.getPositionIncrement());
-//            System.out.println("**************");
+            System.out.println(ta);
+            System.out.println(oa.startOffset() + "_" + oa.endOffset());
+            System.out.println(position += pa.getPositionIncrement());
+            Assert.assertTrue(pa.getPositionIncrement() >= 0);
+            System.out.println("**************");
             pinyin.add(ta.toString());
         }
         return pinyin;
