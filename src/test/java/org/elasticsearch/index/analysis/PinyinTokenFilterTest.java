@@ -29,7 +29,7 @@ public class PinyinTokenFilterTest {
 //        System.out.println("pinyin result:");
 //        System.out.println(pinyin);
 
-        List<String> newPinyin = getTokens("上炼二村");
+        List<String> newPinyin = getTokens("liudehua");
         System.out.println(newPinyin);
 
 //        Assert.assertEquals(

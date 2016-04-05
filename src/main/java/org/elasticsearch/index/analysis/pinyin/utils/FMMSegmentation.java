@@ -17,7 +17,7 @@ public class FMMSegmentation {
         try (
              InputStream fis = Thread.currentThread()
                      .getContextClassLoader()
-                     .getResourceAsStream("./spell.txt");
+                     .getResourceAsStream("spell.txt");
              InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
              BufferedReader br = new BufferedReader(isr)
         ) {

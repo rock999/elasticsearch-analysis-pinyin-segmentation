@@ -23,7 +23,7 @@ public class PinyinSegmentation {
     final boolean initialLetterMode = false;
 
     public List<TokenEntity> split(String s) {
-        List<TokenEntity> rawPinyins = TokenEntity.wrap(FMMSegmentation.splitSpell(s));
+        List<TokenEntity> rawPinyins = TokenEntity.wrap(FMMSegmentation.split(s));
         List<TokenEntity> initialLetters;
         if (initialLetterMode) {
            initialLetters = grepInitialLetters(rawPinyins);
