@@ -25,16 +25,13 @@ public class PinyinTokenFilterTest {
 
         List<String> pinyin;
 
-//        pinyin = getTokens("广'中'苑");
-//        System.out.println("pinyin result:");
-//        System.out.println(pinyin);
+        pinyin = getTokens("刘德华");
+        System.out.println("pinyin result:");
+        System.out.println(pinyin);
 
-        List<String> newPinyin = getTokens("liudehua");
+        List<String> newPinyin = getTokens("今年");
         System.out.println(newPinyin);
 
-//        Assert.assertEquals(
-//                Sets.newHashSet("liu", "de", "hua", "刘", "德", "华"),
-//                pinyin);
     }
 
     private List<String> getTokens(String string) throws IOException {
@@ -51,11 +48,11 @@ public class PinyinTokenFilterTest {
             CharTermAttribute ta = filter.getAttribute(CharTermAttribute.class);
             OffsetAttribute oa = filter.getAttribute(OffsetAttribute.class);
             PositionIncrementAttribute pa = filter.getAttribute(PositionIncrementAttribute.class);
-            System.out.println(ta);
-            System.out.println(oa.startOffset() + "_" + oa.endOffset());
-            System.out.println(position += pa.getPositionIncrement());
             Assert.assertTrue(pa.getPositionIncrement() >= 0);
-            System.out.println("**************");
+//            System.out.println(ta);
+//            System.out.println(oa.startOffset() + "_" + oa.endOffset());
+//            System.out.println(position += pa.getPositionIncrement());
+//            System.out.println("**************");
             pinyin.add(ta.toString());
         }
         return pinyin;

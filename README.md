@@ -40,7 +40,7 @@ Add the following code into {ES_dir}/conf/elasticsearch.yml
 
 specify the analyzer in index mapping, for example
 
-    curl -XPOST http://localhost:9200/medcl/folks/_mapping -d'
+    curl -XPOST http://localhost:9200/{index_name}/{entity_name}/_mapping -d'
     {
         "folks": {
             "properties": {

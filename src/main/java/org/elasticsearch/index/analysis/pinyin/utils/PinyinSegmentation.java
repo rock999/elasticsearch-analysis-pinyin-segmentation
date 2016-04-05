@@ -20,7 +20,11 @@ import java.util.List;
  */
 public class PinyinSegmentation {
 
-    final boolean initialLetterMode = false;
+    // initial letter mode means adding the first letter as token
+    // eg. given "liudehua" we got "liu" "l" "de" "d" "hua" "h"
+    // eg. given "刘德华" we got "刘 ""liu" "l" "德" "de" "d" "华" "hua" "h"
+    // eg. given "刘德hua" we got "刘" "liu" "l" "德" "de" "d" "hua" "h"
+    final boolean initialLetterMode = true;
 
     public List<TokenEntity> split(String s) {
         List<TokenEntity> rawPinyins = TokenEntity.wrap(FMMSegmentation.split(s));
