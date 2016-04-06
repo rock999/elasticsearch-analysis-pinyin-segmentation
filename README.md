@@ -55,6 +55,36 @@ specify the analyzer in index mapping, for example
     }'
 
 Restart ES
-Get done
+try
+
+    http://localhost:9200/{index_name}/_analyze?text=%e5%88%98%e5%be%b7%e5%8d%8e&analyzer=pinyin_analyzer
+    http://localhost:9200/{index_name}/_analyze?text=liudehua&analyzer=pinyin_analyzer
+
+to test the segmentation
+
+Also, it is recommended to use `phrase_prefix` match query so that given query `liudeh` or `liudehu`, "刘德华" can also be found,
+which is friendly to type in pinyin.
+
+    curl -XPOST http://localhost:9200/{index_name}/{entity_name}/_search? -d '{
+      "query" : {
+        "filtered" : {
+          "query" : {
+            "bool" : {
+              "must" : {
+                "match" : {
+                  "name" : {
+                    "query" : "liudehua",
+                    "type" : "phrase_prefix"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "explain" : false
+    }'
+
+
 
 
