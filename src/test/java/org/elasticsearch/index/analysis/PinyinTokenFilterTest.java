@@ -7,6 +7,8 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
 import org.apache.lucene.util.Version;
+import org.elasticsearch.common.base.Function;
+import org.elasticsearch.common.collect.FluentIterable;
 import org.elasticsearch.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,15 +25,38 @@ public class PinyinTokenFilterTest {
     @Test
     public void testTokenFilter() throws IOException {
 
-        List<String> pinyin;
 
-        pinyin = getTokens("刘德华");
-        System.out.println("pinyin result:");
-        System.out.println(pinyin);
+        List<String> sources = Lists.newArrayList(
+//                "changanguojizhongxin",
+//                "jinsenianhuajiayuan",
+//                "pingangongyu",
+//                "tiananguojidasha",
+//                "shenangongyu",
+//                "jinianxiaoqu",
+//                "longhuchunjiangbian",
+//                "xinyuanhuanmingjia",
+//                "jinchengjianangongyu",
+//                "kunxianghuayuan",
+//                "lvdijianianhua",
+                "baojioujun"  //FIXME not solved, change the FMM algorithm
+        );
 
-        List<String> newPinyin = getTokens("今年");
-        System.out.println(newPinyin);
+        List<List<String>> results = FluentIterable.from(sources)
+                .transform(new Function<String, List<String>>() {
+                    @Override
+                    public List<String> apply(String s) {
+                        try {
+                            return getTokens(s);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            return Lists.newArrayList();
+                        }
+                    }
+                }).toList();
 
+        for (List<String> r: results) {
+            System.out.println(r);
+        }
     }
 
     private List<String> getTokens(String string) throws IOException {

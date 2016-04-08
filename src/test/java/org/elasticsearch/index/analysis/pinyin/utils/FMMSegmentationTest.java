@@ -6,7 +6,7 @@ public class FMMSegmentationTest extends TestCase {
 
     public void testSplitSpell() throws Exception {
 
-        String pinyin = "我爱北京tiananmen";
+        String pinyin = "hehuangongyu";
         System.out.println(FMMSegmentation.splitSpell(pinyin));
 
         pinyin = "fh";
@@ -27,6 +27,9 @@ public class FMMSegmentationTest extends TestCase {
         System.out.println(FMMSegmentation.split("heheda"));
         System.out.println(FMMSegmentation.split("yingoulifanchuan"));
         System.out.println(FMMSegmentation.split("buzhidaoshuoshenmehaole"));
+        System.out.println(FMMSegmentation.split("yongangongyu"));
+        System.out.println(FMMSegmentation.split("changanguojizhongxin"));
+
 
 
     }
