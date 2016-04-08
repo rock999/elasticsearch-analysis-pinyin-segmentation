@@ -29,7 +29,7 @@ public class FMMSegmentationTest extends TestCase {
         System.out.println(FMMSegmentation.split("buzhidaoshuoshenmehaole"));
         System.out.println(FMMSegmentation.split("yongangongyu"));
         System.out.println(FMMSegmentation.split("changanguojizhongxin"));
-
+        System.out.println(FMMSegmentation.split("baoan35quanhuagongyequgonglujusushe"));
 
 
     }
