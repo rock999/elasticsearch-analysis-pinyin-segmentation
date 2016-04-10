@@ -1,7 +1,7 @@
-Extended Pinyin Analysis for ElasticSearch
+Pinyin Segmentation Analysis for ElasticSearch
 ========================================
 
-The Extended Pinyin Analysis plugin fork from elasticsearch-analysis-pinyin(https://github.com/medcl/elasticsearch-analysis-pinyin).
+The Pinyin Segmentation Analysis plugin fork from elasticsearch-analysis-pinyin(https://github.com/medcl/elasticsearch-analysis-pinyin).
 And now only supports ES v1.6
 
 ##This extension aims to solve the following problems in production env.
@@ -13,7 +13,10 @@ And now only supports ES v1.6
  * 输入的拼音可能包含分隔符, 比如 liu de hua 或 liu'de'hua
  * 输入的拼音可能并不全 比如 liudeh 或 liudehu => 刘德华 
 
+所以这个分词器着重解决对输入的拼音的拆分问题。
+
 ##Solutions
+
   * 建索引时候 中文字段要建立 中文 + 拼音 + 拼音首字母 的索引 如 刘德华 => 刘德华 liudehua liu de hua
   * 查询时 中文要切分成 中文 + 拼音 + 拼音首字母 的查询 刘德华 => 刘德华 liudehua liu de hua
   * 查询时 拼音 先按照分隔符来分 如 liu'de'hua => liu de hua
