@@ -9,10 +9,14 @@ public class TreeNode {
     Map<Character, TreeNode> children;
 
     char value;
+    boolean endpoint;
 
     // add the string[index] to child
     protected boolean addChild(char[] string, int index) {
-        if (index >= string.length) return false;
+        if (index >= string.length) {
+            endpoint = true;
+            return false;
+        }
 
         if (children == null) {
             children = Maps.newHashMap();
@@ -41,7 +45,13 @@ public class TreeNode {
 
         if (!containsChild(string[index])) return index;
 
-        return children.get(string[index]).findEndIndexInChildren(string, index + 1);
+        int endIndex = children.get(string[index]).findEndIndexInChildren(string, index + 1);
+        if (endIndex == index + 1) {
+            if (children.get(string[index]).endpoint) return endIndex;
+            else return index;
+        } else {
+            return endIndex;
+        }
 
     }
 
@@ -59,6 +69,7 @@ public class TreeNode {
         return org.elasticsearch.common.base.MoreObjects.toStringHelper(this)
                 .add("children", children)
                 .add("value", value)
+                .add("endpoint", endpoint)
                 .toString();
     }
 }

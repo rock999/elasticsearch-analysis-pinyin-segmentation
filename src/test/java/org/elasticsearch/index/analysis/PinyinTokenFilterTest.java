@@ -38,9 +38,11 @@ public class PinyinTokenFilterTest {
 //                "jinchengjianangongyu",
 //                "kunxianghuayuan",
 //                "lvdijianianhua",
-                "xianingxiang",
-                "shuiyurenjiananyuan",
-                "jianingnayouyiguangchang",
+//                "xianingxiang",
+//                "shuiyurenjiananyuan",
+//                "jianingnayouyiguangchang",
+                "liwanquenzhoubeihengjie",  //FIXME
+                "hengange",  // FIXME
                 "baoan35quanhuagongyequgonglujusushe", // FIXME number (35) should not be split
                 "baojioujun"  //FIXME not solved, change the FMM algorithm
         );
