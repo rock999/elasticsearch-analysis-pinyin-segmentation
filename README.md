@@ -1,10 +1,10 @@
-Pinyin Segmentation Analysis for ElasticSearch
+Pinyin Segmentation Analyzer for ElasticSearch  （Elasticsearch的拼音切分分词器）
 ========================================
 
 The Pinyin Segmentation Analysis plugin fork from elasticsearch-analysis-pinyin(https://github.com/medcl/elasticsearch-analysis-pinyin).
 And now only supports ES v1.6
 
-##This extension aims to solve the following problems in production env.
+##This analyzer aims to solve the following problems in production env.
 
  * 对于中文字段, 要支持中文的搜索 比如 刘德华 => 刘德华
  * 对于中文字段, 要支持拼音的搜索 比如 liudehua => 刘德华
