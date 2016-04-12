@@ -67,9 +67,11 @@ public class FMMSegmentationTest extends TestCase {
         Assert.assertEquals(FMMSegmentation.split("changanguojizhongxin"),
                 Lists.newArrayList("chang", "ang", "uo", "ji", "zhong", "xin"));
         Assert.assertEquals(FMMSegmentation.split("baoan35quanhuagongyequgonglujusushe"),
-                Lists.newArrayList("bao", "an", "3", "5", "quan", "hua", "gong",
+                Lists.newArrayList("bao", "an", "35", "quan", "hua", "gong",
                         "ye", "qu", "gong", "lu", "ju", "su", "she"));
 
+        Assert.assertEquals(FMMSegmentation.split("1234567890de0987654321"),
+                Lists.newArrayList("1234567890", "de", "0987654321"));
 
     }
 }

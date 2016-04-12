@@ -41,10 +41,12 @@ public class PinyinTokenFilterTest {
                 "xianingxiang",
                 "shuiyurenjiananyuan",
                 "jianingnayouyiguangchang",
+                "naoujiayuan",
+                "pangu",
                 "liwanquenzhoubeihengjie",  //FIXME
                 "hengange",  // FIXME
                 "baoan35quanhuagongyequgonglujusushe", // FIXME number (35) should not be split
-                "baojioujun"  //FIXME not solved, change the FMM algorithm
+                "baojioujun"  //FIXED, by improving the FMM algorithm
         );
 
         List<List<String>> results = FluentIterable.from(sources)

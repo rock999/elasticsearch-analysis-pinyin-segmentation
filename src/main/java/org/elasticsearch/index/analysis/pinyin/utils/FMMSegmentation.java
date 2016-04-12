@@ -28,6 +28,7 @@ public class FMMSegmentation {
             while ((line = br.readLine()) != null) {
                 trieTree.add(line.toCharArray());
             }
+            trieTree.addNumberNode();
         } catch (IOException e) {
             logger.error("Load spell error {}", e);
         }
