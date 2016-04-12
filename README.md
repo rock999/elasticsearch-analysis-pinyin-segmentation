@@ -1,6 +1,8 @@
 Pinyin Segmentation Analyzer for ElasticSearch  （Elasticsearch的拼音切分分词器）
 ========================================
 
+[![Build Status](https://travis-ci.org/LiangShang/elasticsearch-analysis-pinyin-segmentation.svg?branch=master)](https://travis-ci.org/LiangShang/elasticsearch-analysis-pinyin-segmentation)
+
 The Pinyin Segmentation Analysis plugin fork from elasticsearch-analysis-pinyin(https://github.com/medcl/elasticsearch-analysis-pinyin).
 And now only supports ES v1.6
 
