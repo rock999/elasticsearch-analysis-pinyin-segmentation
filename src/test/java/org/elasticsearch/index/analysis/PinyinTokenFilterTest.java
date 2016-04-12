@@ -27,20 +27,20 @@ public class PinyinTokenFilterTest {
 
 
         List<String> sources = Lists.newArrayList(
-//                "changanguojizhongxin",
-//                "jinsenianhuajiayuan",
-//                "pingangongyu",
-//                "tiananguojidasha",
-//                "shenangongyu",
-//                "jinianxiaoqu",
-//                "longhuchunjiangbian",
-//                "xinyuanhuanmingjia",
-//                "jinchengjianangongyu",
-//                "kunxianghuayuan",
-//                "lvdijianianhua",
-//                "xianingxiang",
-//                "shuiyurenjiananyuan",
-//                "jianingnayouyiguangchang",
+                "changanguojizhongxin",
+                "jinsenianhuajiayuan",
+                "pingangongyu",
+                "tiananguojidasha",
+                "shenangongyu",
+                "jinianxiaoqu",
+                "longhuchunjiangbian",
+                "xinyuanhuanmingjia",
+                "jinchengjianangongyu",
+                "kunxianghuayuan",
+                "lvdijianianhua",
+                "xianingxiang",
+                "shuiyurenjiananyuan",
+                "jianingnayouyiguangchang",
                 "liwanquenzhoubeihengjie",  //FIXME
                 "hengange",  // FIXME
                 "baoan35quanhuagongyequgonglujusushe", // FIXME number (35) should not be split

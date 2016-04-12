@@ -1,6 +1,8 @@
 package org.elasticsearch.index.analysis.pinyin.utils;
 
 import org.elasticsearch.common.collect.Lists;
+import org.elasticsearch.common.logging.ESLogger;
+import org.elasticsearch.common.logging.Loggers;
 import org.elasticsearch.index.analysis.pinyin.entity.TrieTree;
 
 import java.io.*;
@@ -11,6 +13,7 @@ import java.util.regex.Pattern;
 
 public class FMMSegmentation {
 
+    private static final ESLogger logger = Loggers.getLogger(FMMSegmentation.class);
     static final TrieTree trieTree = new TrieTree();
 
     static {
@@ -26,7 +29,7 @@ public class FMMSegmentation {
                 trieTree.add(line.toCharArray());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Load spell error {}", e);
         }
     }
 
