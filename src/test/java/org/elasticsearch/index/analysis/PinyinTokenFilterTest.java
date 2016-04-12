@@ -45,7 +45,8 @@ public class PinyinTokenFilterTest {
                 "pangu",
                 "liwanquenzhoubeihengjie",  //FIXME
                 "hengange",  // FIXME
-                "baoan35quanhuagongyequgonglujusushe", // FIXME number (35) should not be split
+                "jinchengangenong", // FIXME more anbiguity segmentation
+                "baoan35quanhuagongyequgonglujusushe", // FIXED, by improving the FMM algorithm
                 "baojioujun"  //FIXED, by improving the FMM algorithm
         );
 
