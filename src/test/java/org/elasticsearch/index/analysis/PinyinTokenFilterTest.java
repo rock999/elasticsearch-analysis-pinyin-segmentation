@@ -43,9 +43,10 @@ public class PinyinTokenFilterTest {
                 "jianingnayouyiguangchang",
                 "naoujiayuan",
                 "pangu",
+                "PanguGongyuan",
                 "liwanquenzhoubeihengjie",  //FIXME
                 "hengange",  // FIXME
-                "jinchengangenong", // FIXME more anbiguity segmentation
+                "jinchengangenong", // FIXME more ambiguity segmentation
                 "baoan35quanhuagongyequgonglujusushe", // FIXED, by improving the FMM algorithm
                 "baojioujun"  //FIXED, by improving the FMM algorithm
         );
