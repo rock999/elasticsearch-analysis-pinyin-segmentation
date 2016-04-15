@@ -20,14 +20,32 @@ import java.util.List;
  */
 public class PinyinSegmentation {
 
+    private static final double INITIAL_LETTER_THRES = 0.5;
+
     // initial letter mode means adding the first letter as token
     // eg. given "liudehua" we got "liu" "l" "de" "d" "hua" "h"
     // eg. given "刘德华" we got "刘 ""liu" "l" "德" "de" "d" "华" "hua" "h"
     // eg. given "刘德hua" we got "刘" "liu" "l" "德" "de" "d" "hua" "h"
+    // The above mode is not friendly to the phrase_match eg
+    // de will match to dian since they share the d as the initial letter
     final boolean initialLetterMode = false;
 
     public List<TokenEntity> split(String s) {
-        List<TokenEntity> rawPinyins = TokenEntity.wrap(FMMSegmentation.split(s));
+        List<String> splitted = FMMSegmentation.split(s);
+        if ( splitted.size() * 1.0 / s.length() > INITIAL_LETTER_THRES) {
+            // if the number of splitted words is more than half of the length of s,
+            // then assume that s is a string of initial letters
+            // for example given 'ldh' splitted to 'l' 'd' 'h', equal to the size of 'ldh'
+            // so 'ldh' is more likely to be the init letters of "liudehua" but not three terms
+
+            return Lists.newArrayList(new TokenEntity()
+                            .setBeginOffset(0)
+                            .setEndOffset(s.length())
+                            .setRelativePosition(0)
+                            .setValue(s));
+        }
+
+        List<TokenEntity> rawPinyins = TokenEntity.wrap(splitted);
         List<TokenEntity> initialLetters;
         if (initialLetterMode) {
            initialLetters = grepInitialLetters(rawPinyins);

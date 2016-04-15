@@ -27,28 +27,32 @@ public class PinyinTokenFilterTest {
 
 
         List<String> sources = Lists.newArrayList(
-                "changanguojizhongxin",
-                "jinsenianhuajiayuan",
-                "pingangongyu",
-                "tiananguojidasha",
-                "shenangongyu",
-                "jinianxiaoqu",
-                "longhuchunjiangbian",
-                "xinyuanhuanmingjia",
-                "jinchengjianangongyu",
-                "kunxianghuayuan",
-                "lvdijianianhua",
-                "xianingxiang",
-                "shuiyurenjiananyuan",
-                "jianingnayouyiguangchang",
-                "naoujiayuan",
-                "pangu",
-                "PanguGongyuan",
-                "liwanquenzhoubeihengjie",  //FIXME
-                "hengange",  // FIXME
-                "jinchengangenong", // FIXME more ambiguity segmentation
-                "baoan35quanhuagongyequgonglujusushe", // FIXED, by improving the FMM algorithm
-                "baojioujun"  //FIXED, by improving the FMM algorithm
+//                "changanguojizhongxin",
+//                "jinsenianhuajiayuan",
+//                "pingangongyu",
+//                "tiananguojidasha",
+//                "shenangongyu",
+//                "jinianxiaoqu",
+//                "longhuchunjiangbian",
+//                "xinyuanhuanmingjia",
+//                "jinchengjianangongyu",
+//                "kunxianghuayuan",
+//                "lvdijianianhua",
+//                "xianingxiang",
+//                "shuiyurenjiananyuan",
+//                "jianingnayouyiguangchang",
+//                "naoujiayuan",
+//                "pangu",
+//                "PanguGongyuan",
+//                "liwanquenzhoubeihengjie",  //FIXME
+//                "hengange",  // FIXME
+//                "jinchengangenong", // FIXME more ambiguity segmentation
+//                "baoan35quanhuagongyequgonglujusushe", // FIXED, by improving the FMM algorithm
+//                "baojioujun",  //FIXED, by improving the FMM algorithm
+                "刘德华",
+                "ldh",
+                "张学友",
+                "唐朝乐队国际歌"
         );
 
         List<List<String>> results = FluentIterable.from(sources)
