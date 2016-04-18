@@ -52,6 +52,7 @@ public class PinyinTokenFilterTest {
                 "刘德华",
                 "ldh",
                 "张学友",
+                "刘de华",  // FIXME checkout WHat is going on under this situation
                 "唐朝乐队国际歌"
         );
 
