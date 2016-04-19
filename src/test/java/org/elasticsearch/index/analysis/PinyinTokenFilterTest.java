@@ -45,14 +45,14 @@ public class PinyinTokenFilterTest {
 //                "pangu",
 //                "PanguGongyuan",
 //                "liwanquenzhoubeihengjie",
-                "hengange",  // FIXME cannot split heng an ge
-                "jinchengangenong", // FIXME more ambiguity segmentation
-                "baoan35quanhuagongyequgonglujusushe", // FIXED, by improving the FMM algorithm
-                "baojioujun",  //FIXED, by improving the FMM algorithm
-                "刘德华",
-                "ldh",
-                "张学友",
-                "刘de华",  // FIXME checkout WHat is going on under this situation
+//                "hengange",
+//                "jinchengangenong", // FIXME more ambiguity segmentation
+//                "baoan35quanhuagongyequgonglujusushe", // FIXED, by improving the FMM algorithm
+//                "baojioujun",  //FIXED, by improving the FMM algorithm
+//                "刘德华",
+//                "ldh",  // This should not be spliced, since it's more likely to be initial letters
+//                "张学友",
+                "刘de华",  // pinyin and chinese are spliced originally by standard tokenizer
                 "唐朝乐队国际歌"
         );
 
