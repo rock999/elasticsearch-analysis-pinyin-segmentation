@@ -73,5 +73,6 @@ public class FMMSegmentationTest extends TestCase {
         Assert.assertEquals(FMMSegmentation.split("1234567890de0987654321"),
                 Lists.newArrayList("1234567890", "de", "0987654321"));
 
+        System.out.println(FMMSegmentation.split("hengange"));
     }
 }
