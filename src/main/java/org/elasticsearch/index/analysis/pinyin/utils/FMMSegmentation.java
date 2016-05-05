@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 public class FMMSegmentation {
 
     private static final ESLogger logger = Loggers.getLogger(FMMSegmentation.class);
+    // FIXME: add another implementation of Trietree that support prefix segment
     static final TrieTree trieTree = new TrieTree();
 
     static {
